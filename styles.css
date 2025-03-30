@@ -1,0 +1,318 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 3px;
+}
+
+.accordion {
+  margin-top: 20px;
+}
+
+.accordion-item {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+  padding: 18px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-header h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.accordion-item.active .accordion-header {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.accordion-item.active .accordion-header h2 {
+  color: white;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.icon::before,
+.icon::after {
+  content: "";
+  position: absolute;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.icon::before {
+  width: 20px;
+  height: 2px;
+  top: 9px;
+  left: 0;
+}
+
+.icon::after {
+  width: 2px;
+  height: 20px;
+  top: 0;
+  left: 9px;
+}
+
+.accordion-item.active .icon::before,
+.accordion-item.active .icon::after {
+  background-color: white;
+}
+
+.accordion-item.active .icon::after {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  background-color: white;
+}
+
+.accordion-content p {
+  padding: 0 20px 20px;
+  color: #666;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 200px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  .accordion-header h2 {
+    font-size: 16px;
+  }
+
+  .accordion-content p {
+    font-size: 14px;
+  }
+}
+
+.game-container {
+  width: 100%;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.stat {
+  background-color: #f8f9fa;
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.stat p {
+  font-size: 14px;
+  color: #666;
+}
+
+.stat span {
+  font-weight: bold;
+  color: #333;
+}
+
+button {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background-color: #e9ecef;
+}
+
+#game-complete {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#game-complete h2 {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.card {
+  height: 80px;
+  position: relative;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 6px;
+  border: 2px solid #dee2e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-front {
+  background-color: white;
+  transform: rotateY(180deg);
+}
+
+.card-front span {
+  font-size: 32px;
+}
+
+.card-back {
+  background-color: white;
+}
+
+.card-back span {
+  font-size: 24px;
+  color: #adb5bd;
+}
+
+.card.matched {
+  opacity: 0.7;
+}
+
+@media (max-width: 500px) {
+  .game-container {
+    padding: 15px;
+  }
+
+  .stats-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #game-board {
+    gap: 8px;
+  }
+
+  .card {
+    height: 70px;
+  }
+
+  .card-front span {
+    font-size: 28px;
+  }
+}
+
